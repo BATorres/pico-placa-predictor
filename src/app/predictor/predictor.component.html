@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="card mt-5">
+      <div class="container-fluid">
+        <form [formGroup]="form" (ngSubmit)="submit()" novalidate autocomplete="off">
+          <h5 class="text-center mt-3">Pico&Placa Predictor</h5>
+          <div class="row">
+            <div class="col-4">
+              <label>License plate</label>
+              <input
+                type="text"
+                placeholder="Enter license plate"
+                class="form-control"
+                formControlName="license_plate"
+                onkeyup="this.value = this.value.toUpperCase();"
+                [pattern]="licensePlatePattern"
+                [textMask]="licensePlateMask"
+              />
+              <div *ngIf="fc.license_plate.errors && (fc.license_plate.touched || fc.license_plate.dirty)" class="invalid-input-feedback">
+                <div *ngIf="fc.license_plate.errors.required">License plate is required</div>
+                <div *ngIf="fc.license_plate.errors.pattern">Invalid license plate format</div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label>Date</label>
+              <input
+                type="date"
+                placeholder="Choose a date"
+                class="form-control"
+                formControlName="date"
+              />
+              <div *ngIf="fc.date.errors && (fc.date.touched || fc.date.dirty)" class="invalid-input-feedback">
+                <div *ngIf="fc.date.errors.required">Date is required</div>
+              </div>
+            </div>
+  
+            <div class="col-4">
+              <label>Hour</label>
+              <input
+                type="time"
+                min="00:00"
+                max="23:00"
+                placeholder="Enter an hour"
+                class="form-control"
+                formControlName="hour"
+              />
+              <div *ngIf="fc.hour.errors && (fc.hour.touched || fc.hour.dirty)" class="invalid-input-feedback">
+                <div *ngIf="fc.hour.errors.required">Hour is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 d-flex justify-content-center">
+              <button [disabled]="form.invalid" class="btn btn-success">
+                PREDICT
+              </button>
+            </div>
+          </div>
+      
+          <div class="row mt-3">
+            <div class="col-12 justify-content-center">
+              <div
+                *ngIf="isPredicted"
+                class="text-center alert"
+                [ngClass]="{
+                  'alert-danger': !canCirculate,
+                  'alert-success': canCirculate
+                }"
+              >
+                {{ message }}
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,13 +3,13 @@
     <div class="card mt-5">
       <div class="container-fluid">
         <form [formGroup]="form" (ngSubmit)="submit()" novalidate autocomplete="off">
-          <h5 class="text-center mt-3">Predictor de Pico&Placa</h5>
+          <h5 class="text-center mt-3">Pico&Placa Predictor</h5>
           <div class="row">
             <div class="col-4">
-              <label>Placa</label>
+              <label>License plate</label>
               <input
                 type="text"
-                placeholder="Ingrese la placa del vehículo"
+                placeholder="Enter license plate"
                 class="form-control"
                 formControlName="license_plate"
                 onkeyup="this.value = this.value.toUpperCase();"
@@ -17,43 +17,43 @@
                 [textMask]="licensePlateMask"
               />
               <div *ngIf="fc.license_plate.errors && (fc.license_plate.touched || fc.license_plate.dirty)" class="invalid-input-feedback">
-                <div *ngIf="fc.license_plate.errors.required">La placa es obligatoria</div>
-                <div *ngIf="fc.license_plate.errors.pattern">Formato de placa inválido</div>
+                <div *ngIf="fc.license_plate.errors.required">License plate is required</div>
+                <div *ngIf="fc.license_plate.errors.pattern">Invalid license plate format</div>
               </div>
             </div>
 
             <div class="col-4">
-              <label>Fecha</label>
+              <label>Date</label>
               <input
                 type="date"
-                placeholder="Seleccione una fecha"
+                placeholder="Choose a date"
                 class="form-control"
                 formControlName="date"
               />
               <div *ngIf="fc.date.errors && (fc.date.touched || fc.date.dirty)" class="invalid-input-feedback">
-                <div *ngIf="fc.date.errors.required">La fecha es obligatoria</div>
+                <div *ngIf="fc.date.errors.required">Date is required</div>
               </div>
             </div>
   
             <div class="col-4">
-              <label>Hora</label>
+              <label>Hour</label>
               <input
                 type="time"
                 min="00:00"
                 max="23:00"
-                placeholder="Ingrese la hora"
+                placeholder="Enter an hour"
                 class="form-control"
                 formControlName="hour"
               />
               <div *ngIf="fc.hour.errors && (fc.hour.touched || fc.hour.dirty)" class="invalid-input-feedback">
-                <div *ngIf="fc.hour.errors.required">La fecha es obligatoria</div>
+                <div *ngIf="fc.hour.errors.required">Hour is required</div>
               </div>
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-12 d-flex justify-content-center">
               <button [disabled]="form.invalid" class="btn btn-success">
-                PREDECIR
+                PREDICT
               </button>
             </div>
           </div>

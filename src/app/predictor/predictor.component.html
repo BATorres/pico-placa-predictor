@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate autocomplete="off">
+  <input
+    type="text"
+    placeholder="Ingrese la placa del vehículo"
+    class="form-control"
+    formControlName="license_plate"
+  />
+  <input
+    type="date"
+    placeholder="Seleccione una fecha"
+    class="form-control"
+    formControlName="date"
+  />
+  <input
+    type="time"
+    min="00:00"
+    max="23:00"
+    placeholder="Ingrese la hora"
+    class="form-control"
+    formControlName="hour"
+  />
+  <button [disabled]="form.invalid">PREDECIR</button>
+
+  <div *ngIf="isPredicted">
+      {{message}}
+  </div>
+</form>

@@ -11,8 +11,8 @@ In order to run this project, it is necessary to have installed Angular
 For run the project, you must follow the next steps:
 1. Clone the project using Git
 2. Enter to the folder and open a new terminal
-3. On the terminal, execute **npm i** command to install all dependencies
-4. Finally, execute **ng s** to run the project
+3. In the terminal, execute **npm i** command to install all dependencies
+4. Finally, also in the terminal, execute **ng s** to run the project
 
 ## Libraries used
 
